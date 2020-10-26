@@ -1,0 +1,69 @@
+<html>
+
+<button id="open">open</button>
+<button id="close">close</button>
+<input id="txt" type="text">
+<button id="send">send</button>
+<div id="output"></div>
+
+</html>
+
+
+<script>
+
+
+    window.addEventListener("load", function (evt) {
+
+        var ws
+        var _open = document.getElementById("open")
+        var _close = document.getElementById("close")
+        var _send = document.getElementById("send")
+        var _output = document.getElementById("output")
+        var _txt = document.getElementById("txt")
+        var print = function (msg) {
+            msghtml = document.createElement("div")
+            msghtml.innerHTML = msg
+            _output.append(msghtml)
+        }
+
+        _open.onclick = function () {
+            if (ws) {
+                return false;
+            }
+
+            ws = new WebSocket("ws://127.0.0.1:3003/websocket")
+
+            ws.onopen = function () {
+                print("OPEN")
+            }
+
+            ws.onclose = function () {
+                print("CLOSE")
+                ws = null;
+            }
+
+            ws.onmessage = function (e){
+                print(e.data)
+            }
+        }
+
+
+        _send.onclick = function () {
+            if (ws) {
+                ws.send(_txt.value);
+            }
+            return false;
+        }
+
+        //关闭
+        _close.onclick = function () {
+            if (ws) {
+                ws.close()
+            }
+            return false;
+        }
+
+    })
+
+
+</script>
