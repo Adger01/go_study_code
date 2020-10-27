@@ -42,6 +42,5 @@ func main() {
 	fmt.Println(arrayStack)
 
 	arrayStack.Pop()
-
 	fmt.Println(arrayStack)
 }
