@@ -17,7 +17,7 @@ func StrPlus1(a []string) string {
 }
 
 func StrPlus2(a []string) string {
-	return strings.Join(a," ")
+	return strings.Join(a, " ")
 }
 func main() {
 	a := []string{

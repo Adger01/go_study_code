@@ -19,7 +19,6 @@ func web(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 
-
 func Echo(conn *websocket.Conn) {
 	var err error
 	for {

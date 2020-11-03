@@ -1,12 +1,12 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
 func main() {
 	type Student struct {
-		name string
+		name  string
 		score int
 	}
 
